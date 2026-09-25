@@ -5,6 +5,7 @@ import profileImg from './assets/profile.jpg'
 
 // 2. Importe o componente Projects (ajuste o caminho se salvou em outra pasta)
 import Projects from './components/Projects' 
+import Experience from './components/Experience' 
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         </div>
       </section>
       <Projects />
+      <Experience />
       <footer>
         <p>© 2026 - Todos os direitos reservados</p>
       </footer>
