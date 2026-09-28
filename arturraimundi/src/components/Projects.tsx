@@ -35,15 +35,31 @@ const repositories = [
 export default function Projects() {
   return (
     <section id="projects">
-      {/* 2. O .map vai repetir a div 'card' para cada repositório */}
-      {repositories.map((repo) => (
-        <div className="card" key={repo.id}>
-          <h3>{repo.name}</h3>
-          <span>{repo.visibility}</span>
-          <p>{repo.description}</p>
-          <small>Linguagem: {repo.language}</small>
-        </div>
-      ))}
+
+      <div className="projtext">
+        <h2>Meus Projetos</h2>
+        <p>Alguns dos projetos que desenvolvi.</p>
+      </div>
+
+      <div className="projects-grid">
+        {repositories.map((repo) => (
+          <div className="card" key={repo.id}>
+
+            <div className="card-header">
+              <h3>{repo.name}</h3>
+              <span>{repo.visibility}</span>
+            </div>
+
+            <p>{repo.description}</p>
+
+            <small>
+              Linguagem: {repo.language}
+            </small>
+
+          </div>
+        ))}
+      </div>
+
     </section>
   );
 }
