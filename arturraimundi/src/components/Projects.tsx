@@ -1,4 +1,3 @@
-import React from 'react';
 
 // 1. Dados do JSON estruturados
 const repositories = [
