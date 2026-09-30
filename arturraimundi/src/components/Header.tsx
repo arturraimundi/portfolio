@@ -3,9 +3,8 @@ import profileImg from '../assets/profile.jpg'
 export default function Header() {
   return (
     <section id="header">
-       <script
-      type="module"
-      src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"></script>
+
+    <div className="card">
       <div className="img-header"> 
           <img src={profileImg} alt="Artur Raimundi" /> 
                            
@@ -16,6 +15,7 @@ export default function Header() {
              Backend & Data Developer | Data Integration, SQL, PHP | @ComputerScience
           </p>
         </div>
+      </div>
     </section>
   );
 }

@@ -8,6 +8,7 @@ declare module 'react' {
         HTMLElement
       > & {
         url: string
+        background?: string
         'events-target'?: string
       }
     }

@@ -1,2 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
 :root {
+	font-family: 'DM Sans', sans-serif;
+	color: #f1f5f3;
+	background: #0a1112;
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	--color-ink: #f1f5f3;
+	--color-muted: rgba(225, 235, 231, 0.7);
+	--color-accent: #a6e6ca;
+	--color-accent-warm: #f0c18c;
+	--glass-border: rgba(235, 250, 244, 0.24);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	min-width: 320px;
+	scroll-behavior: smooth;
+	scroll-padding-top: 2rem;
+}
+
+body {
+	min-width: 320px;
+	min-height: 100vh;
+	margin: 0;
+	color: var(--color-ink);
+	background: #0a1112;
+}
+
+button,
+input,
+textarea,
+select {
+	font: inherit;
+}
+
+::selection {
+	color: #10211b;
+	background: var(--color-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		scroll-behavior: auto !important;
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
 }
