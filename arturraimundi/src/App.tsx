@@ -7,7 +7,7 @@ import Experience from './components/Experience'
 
 function App() {
   useEffect(() => {
-    const sections = document.querySelectorAll<HTMLElement>('.content > section')
+    const sections = document.querySelectorAll<HTMLElement>('.reveal')
 
     if (!('IntersectionObserver' in window)) {
       sections.forEach((section) => section.classList.add('is-visible'))
@@ -21,37 +21,42 @@ function App() {
           currentObserver.unobserve(entry.target)
         }
       })
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' })
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' })
 
-    sections.forEach((section) => {
-      section.classList.add('reveal-section')
-      observer.observe(section)
-    })
+    sections.forEach((section) => observer.observe(section))
 
     return () => observer.disconnect()
   }, [])
 
   return (
     <div className="app">
+      <nav className="nav">
+        <a href="#top" className="nav-brand">Artur Raimundi</a>
+        <div className="nav-links">
+          <a href="#projects">Projetos</a>
+          <a href="#experience">Experiência</a>
+          <a
+            href="https://github.com/arturraimundi"
+            target="_blank"
+            rel="noreferrer"
+            className="nav-cta"
+          >
+            GitHub
+          </a>
+        </div>
+      </nav>
 
-      <spline-viewer
-        url="https://prod.spline.design/fJ2ptJKzT-sDkpfO/scene.splinecode"
-        background="rgba(218,81,221,0.2)"
-        className="spline-background"
-      />
+      <Header />
 
-
-      <div className="content">
-
-        <Header />
+      <main className="content">
         <Projects />
         <Experience />
+      </main>
 
-        <footer>
-          <p>© 2026 - Todos os direitos reservados</p>
-        </footer>
-      </div>
-
+      <footer className="footer">
+        <p>© 2026 Artur Raimundi</p>
+        <a href="#top">Voltar ao topo ↑</a>
+      </footer>
     </div>
   )
 }
