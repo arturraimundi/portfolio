@@ -4,7 +4,7 @@ const experiencesData = {
       id: 1,
       company: "IXCSoft",
       role: "Desenvolvedor",
-      period: "jul 2026 – Presente",
+      period: "Jul 2026 – Presente",
       highlights: [
         "Desenvolvimento de algoritmos em PHP para rotinas de migração de dados e mapeamento estrutural de sistemas.",
         "Manipulação, análise e validação de dados em múltiplos SGBDs relacionais (MariaDB, PostgreSQL, MySQL e Oracle).",
@@ -17,7 +17,7 @@ const experiencesData = {
       id: 2,
       company: "ATSJornada by nstech",
       role: "Analista de Suporte",
-      period: "Set 2025 – jul 2026",
+      period: "Set 2025 – Jul 2026",
       highlights: [
         "Análise e validação de dados em bases SQL Server e MySQL para identificação de inconsistências e falhas de integração.",
         "Atuação na resolução de chamados via Jira, com foco em sistemas críticos e análise técnica de problemas.",
@@ -93,61 +93,50 @@ const experiencesData = {
 
 export default function Experience() {
   return (
-    <section id="experience">
-
-      <div className="projtext">
-        <h2>Experiência Profissional</h2>
-        <p>Minha trajetória profissional na área de tecnologia.</p>
+    <section id="experience" className="section reveal">
+      <div className="section-head">
+        <p className="eyebrow">02 — Experiência</p>
+        <h2>Trajetória profissional</h2>
+        <p>Onde trabalhei e o que fiz em cada lugar.</p>
       </div>
 
-      <div className="projects-grid">
+      <ol className="timeline">
         {experiencesData.for_profit.map((exp) => (
-          <div className="card" key={`fp-${exp.id}`}>
+          <li className="timeline-item" key={`fp-${exp.id}`}>
+            <span className="timeline-period">{exp.period}</span>
 
-            <div className="card-header">
-              <div>
-                <h3>{exp.role}</h3>
-                <h4>{exp.company}</h4>
-              </div>
+            <div className="card">
+              <h3>{exp.role}</h3>
+              <p className="card-sub">{exp.company}</p>
 
-              <span>{exp.period}</span>
+              <ul className="bullets">
+                {exp.highlights.map((bullet, index) => (
+                  <li key={index}>{bullet}</li>
+                ))}
+              </ul>
             </div>
-
-            <ul>
-              {exp.highlights.map((bullet, index) => (
-                <li key={index}>
-                  {bullet}
-                </li>
-              ))}
-            </ul>
-
-          </div>
+          </li>
         ))}
+      </ol>
+
+      <div className="section-head section-head-sub">
+        <p className="eyebrow">03 — Voluntariado</p>
+        <h2>Projetos e voluntariado</h2>
       </div>
 
-      <div className="projtext experience-projects-title">
-        <h2>Projetos e Voluntariado</h2>
-      </div>
-
-      <div className="projects-grid">
+      <div className="grid grid-compact">
         {experiencesData.non_profit.map((exp) => (
           <div className="card" key={`np-${exp.id}`}>
-
-            <div className="card-header">
-              <div>
-                <h3>{exp.role}</h3>
-                <h4>{exp.project}</h4>
-              </div>
-
-              <span>{exp.year}</span>
+            <div className="card-top">
+              <span className="card-label">{exp.institution}</span>
+              <span className="card-year">{exp.year}</span>
             </div>
 
-            <p>{exp.institution}</p>
-
+            <h3>{exp.project}</h3>
+            <p className="card-sub">{exp.role}</p>
           </div>
         ))}
       </div>
-          
     </section>
-  );
+  )
 }

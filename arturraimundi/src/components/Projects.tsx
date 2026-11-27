@@ -1,64 +1,71 @@
-
-// 1. Dados do JSON estruturados
 const repositories = [
   {
-    "id": 1,
-    "name": "gumpchess",
-    "visibility": "Public",
-    "description": "Chess game",
-    "language": "Frontend | JavaScript"
+    id: 1,
+    name: 'gumpchess',
+    description: 'Jogo de xadrez no navegador.',
+    area: 'Frontend',
+    tags: ['JavaScript'],
   },
   {
-    "id": 2,
-    "name": "GerenciamentoDePortfolio-Spring",
-    "visibility": "Public",
-    "description": "Este é um sistema de gerenciamento de portfólio de projetos desenvolvido com Spring Boot, oferecendo uma API REST para gestão de projetos e membros de equipe.",
-    "language": "Backend | Java | SpringBoot | MySQL"
+    id: 2,
+    name: 'GerenciamentoDePortfolio-Spring',
+    description:
+      'Sistema de gerenciamento de portfólio de projetos desenvolvido com Spring Boot, oferecendo uma API REST para gestão de projetos e membros de equipe.',
+    area: 'Backend',
+    tags: ['Java', 'Spring Boot', 'MySQL'],
   },
   {
-    "id": 3,
-    "name": "Trashealth",
-    "visibility": "Public",
-    "description": "Trashealth conecta usuários e empresas, fornecendo informações sobre pontos de coleta de lixo eletrônico e criando um ambiente que estimula práticas sustentáveis e o reaproveitamento de materiais.",
-    "language": "Fullstack | Django | Postgres"
+    id: 3,
+    name: 'Trashealth',
+    description:
+      'Conecta usuários e empresas com informações sobre pontos de coleta de lixo eletrônico, estimulando práticas sustentáveis e o reaproveitamento de materiais.',
+    area: 'Fullstack',
+    tags: ['Django', 'PostgreSQL'],
   },
   {
-    "id": 4,
-    "name": "weatherApp",
-    "visibility": "Public",
-    "description": "Website de previsão do tempo desenvolvido com Angular e TypeScript, consumindo a WeatherAPI para exibir dados em tempo real com base na cidade pesquisada.",
-    "language": "Frontend |React | TypeScript"
-  }
-];
+    id: 4,
+    name: 'weatherApp',
+    description:
+      'Website de previsão do tempo que consome a WeatherAPI para exibir dados em tempo real com base na cidade pesquisada.',
+    area: 'Frontend',
+    tags: ['React', 'TypeScript'],
+  },
+]
 
 export default function Projects() {
   return (
-    <section id="projects">
-
-      <div className="projtext">
-        <h2>Meus Projetos</h2>
-        <p>Alguns dos projetos que desenvolvi.</p>
+    <section id="projects" className="section reveal">
+      <div className="section-head">
+        <p className="eyebrow">01 — Projetos</p>
+        <h2>Coisas que construí</h2>
+        <p>Uma seleção de projetos pessoais e acadêmicos.</p>
       </div>
 
-      <div className="projects-grid">
+      <div className="grid">
         {repositories.map((repo) => (
-          <div className="card" key={repo.id}>
-
-            <div className="card-header">
-              <h3>{repo.name}</h3>
-              <span>{repo.visibility}</span>
+          <a
+            className="card card-link"
+            key={repo.id}
+            href={`https://github.com/arturraimundi/${repo.name}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <div className="card-top">
+              <span className="card-label">{repo.area}</span>
+              <span className="card-arrow" aria-hidden="true">↗</span>
             </div>
 
+            <h3>{repo.name}</h3>
             <p>{repo.description}</p>
 
-            <small>
-              {repo.language}
-            </small>
-
-          </div>
+            <ul className="tags">
+              {repo.tags.map((tag) => (
+                <li key={tag}>{tag}</li>
+              ))}
+            </ul>
+          </a>
         ))}
       </div>
-
     </section>
-  );
+  )
 }
