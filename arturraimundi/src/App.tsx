@@ -4,8 +4,11 @@ import './App.css'
 import Header from './components/Header'
 import Projects from './components/Projects'
 import Experience from './components/Experience'
+import { useMouseEffects } from './useMouseEffects'
 
 function App() {
+  useMouseEffects()
+
   useEffect(() => {
     const sections = document.querySelectorAll<HTMLElement>('.reveal')
 
@@ -30,6 +33,8 @@ function App() {
 
   return (
     <div className="app">
+      <div className="cursor-glow" aria-hidden="true" />
+
       <nav className="nav">
         <a href="#top" className="nav-brand">Artur Raimundi</a>
         <div className="nav-links">

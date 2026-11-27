@@ -8,6 +8,7 @@ export default function Header() {
       <spline-viewer
         url="https://prod.spline.design/fJ2ptJKzT-sDkpfO/scene.splinecode"
         background="#FAF9F5"
+        events-target="global"
         className="hero-3d"
       />
       <div className="hero-veil" aria-hidden="true" />

@@ -3,6 +3,27 @@
   background: var(--bg);
 }
 
+/* ---------- Brilho que segue o cursor ---------- */
+
+.cursor-glow {
+  position: fixed;
+  z-index: 30;
+  top: 0;
+  left: 0;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(217, 119, 87, 0.14) 0%, rgba(217, 119, 87, 0.05) 35%, transparent 70%);
+  mix-blend-mode: multiply;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 400ms ease;
+}
+
+.has-cursor .cursor-glow {
+  opacity: 1;
+}
+
 /* ---------- Navegação ---------- */
 
 .nav {
@@ -99,9 +120,12 @@
 .hero-text {
   max-width: 560px;
   pointer-events: auto;
+  transform: translate3d(calc(var(--px, 0) * -10px), calc(var(--py, 0) * -8px), 0);
+  transition: transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 .hero-avatar {
+  position: relative;
   display: block;
   width: 72px;
   height: 72px;
@@ -110,6 +134,8 @@
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 0 0 1px var(--line), var(--shadow-md);
+  transform: translate3d(calc(var(--px, 0) * -6px), calc(var(--py, 0) * -6px), 0);
+  transition: transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 .eyebrow {
@@ -258,14 +284,37 @@
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface);
+  position: relative;
+  overflow: hidden;
   box-shadow: var(--shadow-sm);
-  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--lift, 0px));
+  transition: border-color 200ms ease, box-shadow 200ms ease, transform 350ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.card-link:hover {
+/* Luz que segue o cursor dentro do card */
+.card::before {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(320px circle at var(--x, 50%) var(--y, 50%), rgba(217, 119, 87, 0.1), transparent 65%);
+  content: '';
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+
+.card > * {
+  position: relative;
+}
+
+.card:hover {
+  --lift: -3px;
   border-color: var(--line-strong);
   box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+  transition: border-color 200ms ease, box-shadow 200ms ease, transform 120ms ease-out;
+}
+
+.card:hover::before {
+  opacity: 1;
 }
 
 .card-top {
